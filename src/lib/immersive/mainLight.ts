@@ -12,11 +12,9 @@ export class MainLight {
   /**
    * Creates main source of light for scene.
    * @param scene Main scene.
-   * @param sphere Sphere mesh.
-   * @param box Box mesh.
-   * @param car Car mesh.
+   * @param mesh Mesh.
    */
-  public static create(scene: Scene, sphere: Mesh, box: Mesh, car: Mesh) {
+  public static create(scene: Scene, mesh: Mesh) {
     const directionalLight = new DirectionalLight(
       'mainLight',
       new Vector3(-1, -1, -1),
@@ -31,13 +29,7 @@ export class MainLight {
 
     const shadowGenerator = new ShadowGenerator(2048, directionalLight);
 
-    // sphere.receiveShadows = true;
-    // shadowGenerator.addShadowCaster(sphere);
-
-    // box.receiveShadows = true;
-    // shadowGenerator.addShadowCaster(box);
-
-    car.receiveShadows = true;
-    shadowGenerator.addShadowCaster(car);
+    mesh.receiveShadows = true;
+    shadowGenerator.addShadowCaster(mesh);
   }
 }
